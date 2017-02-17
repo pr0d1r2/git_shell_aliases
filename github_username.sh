@@ -1,10 +1,10 @@
-function gitlab_username() {
-  case $GITLAB_USERNAME in
+function github_username() {
+  case $GITHUB_USERNAME in
     "")
       whoami
       ;;
     *)
-      echo $GITLAB_USERNAME
+      echo $GITHUB_USERNAME
       ;;
   esac
 }
