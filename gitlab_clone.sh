@@ -9,12 +9,14 @@ function gitlab_clone() {
         echorun git clone \
           git@gitlab.com:$gitlab_clone_USER/$gitlab_clone_REPO.git \
           $HOME/projects/$gitlab_clone_USER-$gitlab_clone_REPO/
+        echorun cd $HOME/projects/$gitlab_clone_USER-$gitlab_clone_REPO/ || return $?
         ;;
       *)
         gitlab_clone_USER=`gitlab_username`
         echorun git clone \
           git@gitlab.com:$gitlab_clone_USER/$gitlab_clone_PARAM.git \
           $HOME/projects/$gitlab_clone_PARAM/
+        echorun cd $HOME/projects/$gitlab_clone_PARAM/ || return $?
         ;;
     esac
   done
