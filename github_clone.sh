@@ -6,17 +6,23 @@ function github_clone() {
       */*)
         local github_clone_USER=`echo $github_clone_PARAM | cut -f 1 -d /`
         local github_clone_REPO=`echo $github_clone_PARAM | cut -f 2 -d /`
-        echorun git clone \
-          git@github.com:$github_clone_USER/$github_clone_REPO.git \
-          $HOME/projects/$github_clone_USER-$github_clone_REPO/
+        if [ ! -d $HOME/projects/$github_clone_USER-$github_clone_REPO/ ]; then
+          echorun git clone \
+            git@github.com:$github_clone_USER/$github_clone_REPO.git \
+            $HOME/projects/$github_clone_USER-$github_clone_REPO/
+        fi
         echorun cd $HOME/projects/$github_clone_USER-$github_clone_REPO/ || return $?
+        echorun git pull || return $?
         ;;
       *)
         github_clone_USER=`github_username`
-        echorun git clone \
-          git@github.com:$github_clone_USER/$github_clone_PARAM.git \
-          $HOME/projects/$github_clone_PARAM/
+        if [ ! -d $HOME/projects/$github_clone_PARAM/ ]; then
+          echorun git clone \
+            git@github.com:$github_clone_USER/$github_clone_PARAM.git \
+            $HOME/projects/$github_clone_PARAM/
+        fi
         echorun cd $HOME/projects/$github_clone_PARAM/ || return $?
+        echorun git pull || return $?
         ;;
     esac
   done
