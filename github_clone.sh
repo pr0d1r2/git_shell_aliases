@@ -22,7 +22,7 @@ function github_clone() {
             $HOME/projects/$github_clone_PARAM/
         fi
         echorun cd $HOME/projects/$github_clone_PARAM/ || return $?
-        echorun git pull || return $?
+        echorun git pull
         ;;
     esac
   done
