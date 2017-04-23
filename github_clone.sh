@@ -12,7 +12,7 @@ function github_clone() {
             $HOME/projects/$github_clone_USER-$github_clone_REPO/
         fi
         echorun cd $HOME/projects/$github_clone_USER-$github_clone_REPO/ || return $?
-        echorun git pull || return $?
+        echorun git pull
         ;;
       *)
         github_clone_USER=`github_username`
