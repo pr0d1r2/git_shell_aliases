@@ -26,4 +26,5 @@ function github_clone() {
         ;;
     esac
   done
+  return 0
 }
