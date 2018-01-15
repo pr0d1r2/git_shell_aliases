@@ -1,3 +1,3 @@
 function git_pull_rebase_origin_master() {
-  git_pull_rebase_origin master || return $?
+  echorun git pull --rebase origin master || return $?
 }
