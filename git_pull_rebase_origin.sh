@@ -1,3 +1,3 @@
 function git_pull_rebase_origin() {
-  echorun git pull --rebase origin "$@" || return $?
+  echorun overcommit_disable git pull --rebase origin "$@" || return $?
 }
