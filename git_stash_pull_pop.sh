@@ -1,4 +1,5 @@
 function git_stash_pull_pop() {
-  git stash && git pull && git stash pop
-  return $?
+  overcommit_disable git stash || return $?
+  overcommit_disable git pull || return $?
+  overcommit_disable git stash pop || return $?
 }
