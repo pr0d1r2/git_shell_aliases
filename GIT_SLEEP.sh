@@ -1,0 +1,2 @@
+GIT_SLEEP="5"
+export GIT_SLEEP

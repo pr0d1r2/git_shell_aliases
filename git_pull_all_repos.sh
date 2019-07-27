@@ -7,10 +7,12 @@
 function git_pull_all_repos() {
   case $1 in
     "")
-      find . -name ".git" | parallel dirname | parallel "cd {} && git fetch && git pull"
+      find . -name ".git" | parallel dirname | \
+        parallel -j "$GIT_THREADS" "cd {} && git fetch && git pull ; sleep $GIT_SLEEP"
       ;;
     *)
-      parallel "find {} -name '.git'" ::: "$@" | parallel dirname | parallel "cd {} && git fetch && git pull"
+      parallel "find {} -name '.git'" ::: "$@" | parallel dirname | \
+        parallel -j "$GIT_THREADS" "cd {} && git fetch && git pull ; sleep $GIT_SLEEP"
       ;;
   esac
 }
