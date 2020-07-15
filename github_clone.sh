@@ -12,7 +12,7 @@ function github_clone() {
             $HOME/projects/$github_clone_USER-$github_clone_REPO/
         fi
         echorun cd $HOME/projects/$github_clone_USER-$github_clone_REPO/ || return $?
-        echorun git pull
+        echorun git pull --rebase
         ;;
       *)
         github_clone_USER=`github_username`
@@ -22,7 +22,7 @@ function github_clone() {
             $HOME/projects/$github_clone_PARAM/
         fi
         echorun cd $HOME/projects/$github_clone_PARAM/ || return $?
-        echorun git pull
+        echorun git pull --rebase
         ;;
     esac
   done
