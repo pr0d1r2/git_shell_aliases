@@ -1,3 +1,3 @@
 function git_current_branch() {
-  git status | grep '^On branch' | cut -f 3- -d ' '
+  git status | egrep '^(On branch|Na gałęzi)' | cut -f 3- -d ' '
 }
