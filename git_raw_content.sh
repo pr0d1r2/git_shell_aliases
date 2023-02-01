@@ -3,5 +3,5 @@
 # Example usage:
 #   git_raw_content
 function git_raw_content() {
-  git status -sb | grep -v "master...origin/master" | cut -b4- | parallel cat
+  git status -sb | grep -v "$(git_default_branch)...origin/$(git_default_branch)" | cut -b4- | parallel cat
 }

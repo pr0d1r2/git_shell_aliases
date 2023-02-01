@@ -9,16 +9,16 @@ function git_pull_master() {
   local git_pull_master_BRANCH
   git_pull_master_BRANCH="$(git_current_branch)"
   case "$git_pull_master_BRANCH" in
-    "master");;
+    "$(git_default_branch)");;
     *)
-      overcommit_disable git checkout master || return $?
+      overcommit_disable git checkout $(git_default_branch) || return $?
       ;;
   esac
   overcommit_disable git pull || return $?
   # shellcheck disable=SC2048
   $* || return $?
   case "$git_pull_master_BRANCH" in
-    "" | "master");;
+    "" | "$(git_default_branch)");;
     *)
       overcommit_disable git checkout "$git_pull_master_BRANCH" || return $?
       ;;
