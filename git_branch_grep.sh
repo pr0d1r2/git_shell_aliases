@@ -2,7 +2,7 @@ function git_branch_grep() {
   git fetch &>/dev/null || git fetch || return $?
   local git_branch_grep_BASE_COMMAND
   git_branch_grep_BASE_COMMAND='SHA=`git rev-parse {}`'
-  git_branch_grep_BASE_COMMAND+=" && git diff \$SHA $(git merge-base origin/$(git_default_branch) \$SHA"
+  git_branch_grep_BASE_COMMAND+=" && git diff \$SHA $(git merge-base origin/$(git_default_branch) \$SHA)"
   git_branch_grep_BASE_COMMAND+=' | grep "^+"'
   local git_branch_grep_SEPARATOR_COMMAND
   git_branch_grep_SEPARATOR_COMMAND='echo "=========================================="'
